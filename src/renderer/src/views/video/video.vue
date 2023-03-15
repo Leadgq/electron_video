@@ -21,11 +21,11 @@
           <li
             v-for="(item, index) in sourceList"
             :key="index"
-            class="text-white h-[30px] flex items-center justify-center common-color mb-5 text-sm cursor-pointer"
+            class="text-white h-[30px] flex items-center common-color mb-5 text-sm cursor-pointer"
             :class="{ active: index === activeIndex }"
-            @click="selectVideo(index)"
           >
-            {{ item.name }}
+            <div class="w-[80%] play-list" @click="selectVideo(index)">{{ item.name }}</div>
+            <div class="flex-1 text-center" @click="removeVideo(index)">删除</div>
           </li>
         </ul>
       </div>
@@ -82,6 +82,9 @@ const selectVideo = (index: number) => {
   const { blob } = sourceList.value[index]
   videoUrl.value = blob
   registerAndInit()
+}
+const removeVideo = (index: number) => {
+  sourceList.value.splice(index, 1)
 }
 // 下一集对象
 const nextVideo = (): fileType => {
@@ -197,5 +200,12 @@ const changActiveIndex = () => {
   border-radius: 3px;
   height: 100px; /* 滚动条滑块长度 */
   background-color: #ccc;
+}
+.play-list {
+  overflow: hidden;
+  /*文本不会换行*/
+  white-space: nowrap;
+  /*当文本溢出包含元素时，以省略号表示超出的文本*/
+  text-overflow: ellipsis;
 }
 </style>

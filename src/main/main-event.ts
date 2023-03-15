@@ -23,6 +23,6 @@ ipcMain.handle('uploadFile', async () => {
   return await dialog.showOpenDialog({
     title: '请上传视频',
     properties: ['openFile', 'multiSelections'],
-    filters: [{ name: 'Movies', extensions: ['mkv', 'avi', 'mp4'] }]
+    filters: [{ name: 'Movies', extensions: ['mkv', 'avi', 'mp4', 'mov'] }]
   })
 })
