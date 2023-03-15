@@ -7,7 +7,7 @@
       <div id="videoContainer" class="h-full w-[70%]"></div>
       <div class="flex-1 tools-container">
         <img
-          v-if="videoUrl"
+          v-if="sourceList.length > 0"
           :src="setImage"
           alt=""
           class="img-set cursor-pointer"
@@ -62,6 +62,7 @@ const initVideo = () => {
     width: '70%',
     height: '100%',
     lang: 'zh-cn',
+
     volume: 0.5,
     autoplay: false,
     videoInit: true,

@@ -1,5 +1,9 @@
 <template>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive :include="['video']">
+      <component :is="Component"></component>
+    </keep-alive>
+  </router-view>
 </template>
 
 <script setup lang="ts"></script>
