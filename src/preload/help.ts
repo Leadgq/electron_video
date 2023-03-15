@@ -12,3 +12,7 @@ export const getFileSuffix = (filename: string): string => {
   if (file) suffix = file.split('.').pop()
   return suffix
 }
+
+export const bufferToBlob = (buffer: Buffer, fleSuffix: string) => {
+  return new Blob([buffer], { type: `video/${fleSuffix}` })
+}

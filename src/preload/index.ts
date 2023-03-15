@@ -2,7 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 import fs from 'fs'
 import { fileType } from '../type/index'
-import { getFileName, getFileSuffix } from './help'
+import { getFileName, getFileSuffix, bufferToBlob } from './help'
 
 const fileList: fileType[] = []
 
@@ -30,10 +30,6 @@ const api = {
     }
     return fileList
   }
-}
-
-const bufferToBlob = (buffer: Buffer, fleSuffix: string) => {
-  return new Blob([buffer], { type: `video/${fleSuffix}` })
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to
