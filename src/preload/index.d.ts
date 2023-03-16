@@ -7,6 +7,7 @@ declare global {
       changeWindowSize: (width: number, height: number) => void
       resetWindowSize: () => void
       uploadFile: () => fileType[]
+      removeFile: (index: number) => void
     }
   }
 }

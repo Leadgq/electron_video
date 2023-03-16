@@ -3,7 +3,6 @@ import { electronAPI } from '@electron-toolkit/preload'
 import fs from 'fs'
 import { fileType } from '../type/index'
 import { getFileName, getFileSuffix, bufferToBlob } from './help'
-
 const fileList: fileType[] = []
 
 // Custom APIs for renderer
@@ -29,6 +28,9 @@ const api = {
       })
     }
     return fileList
+  },
+  removeFile(index: number) {
+    fileList.splice(index, 1)
   }
 }
 

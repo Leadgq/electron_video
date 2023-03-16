@@ -7,7 +7,6 @@
       <div id="videoContainer" class="h-full w-[70%]"></div>
       <div class="flex-1 tools-container">
         <img
-          v-if="sourceList.length > 0"
           :src="setImage"
           alt=""
           class="img-set cursor-pointer"
@@ -48,7 +47,6 @@ const back = () => {
 }
 //  播放源
 const videoUrl = ref('')
-
 const sourceList: Ref<fileType[]> = ref([])
 const activeIndex = ref(0)
 // 播放器实例
@@ -62,7 +60,6 @@ const initVideo = () => {
     width: '70%',
     height: '100%',
     lang: 'zh-cn',
-
     volume: 0.5,
     autoplay: false,
     videoInit: true,
@@ -85,13 +82,14 @@ const selectVideo = (index: number) => {
 }
 const removeVideo = (index: number) => {
   sourceList.value.splice(index, 1)
+  window.api.removeFile(index)
 }
 // 下一集对象
 const nextVideo = (): fileType => {
   return sourceList.value[(activeIndex.value + 1) % sourceList.value.length]
 }
 const uploadFile = async () => {
-  if (playInstance.value) playInstance.value.destroy()
+  destroyVideo()
   // 主进程调用上传文件方法
   const result = (await window.api.uploadFile()) as fileType[]
   if (!isAvailableArray(result)) return
