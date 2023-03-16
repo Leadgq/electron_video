@@ -35,10 +35,19 @@ const toolsList: Ref<listType[]> = ref([
     key: '2',
     name: '图片压缩',
     path: '/image'
+  },
+  {
+    key: '3',
+    name: '屏幕录制',
+    path: '/screen'
   }
 ])
 const jumpToPage = (item: listType) => {
-  window.api.changeWindowSize(1200, 600)
+  if (item.path === 'video') {
+    window.api.changeWindowSize(1200, 600)
+  } else if (item.path === 'screen') {
+    window.api.changeWindowSize(800, 600)
+  }
   router.push(item.path)
 }
 </script>
