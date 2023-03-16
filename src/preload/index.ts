@@ -2,7 +2,8 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 import fs from 'fs'
 import { fileType } from '../type/index'
-import { getFileName, getFileSuffix, bufferToBlob } from './help'
+import { bufferToBlob, getFileName, getFileSuffix } from './help'
+
 const fileList: fileType[] = []
 
 // Custom APIs for renderer
@@ -31,6 +32,9 @@ const api = {
   },
   removeFile(index: number) {
     fileList.splice(index, 1)
+  },
+  showMessage(message: string, type: string) {
+    ipcRenderer.send('showMessage', { message, type })
   }
 }
 

@@ -74,7 +74,7 @@ const startRecord = async () => {
   }
   const config = { mimeType: 'video/webm; codecs=vp8' }
   try {
-    const stream = await navigator.mediaDevices.getUserMedia(options)
+    const stream = await navigator.mediaDevices.getDisplayMedia(options)
     const video = document.querySelector('video')!
     video.srcObject = stream
     video.onloadedmetadata = () => video.play()
@@ -83,6 +83,7 @@ const startRecord = async () => {
     mediaRecorder.value.start()
   } catch (error) {
     console.log(error)
+    window.api.showMessage('获取屏幕录制权限失败或者未安装摄像头', 'error')
   }
 }
 

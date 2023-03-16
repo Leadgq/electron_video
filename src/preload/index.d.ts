@@ -8,6 +8,7 @@ declare global {
       resetWindowSize: () => void
       uploadFile: () => fileType[]
       removeFile: (index: number) => void
+      showMessage:(message: string,type:string) => void
     }
   }
 }

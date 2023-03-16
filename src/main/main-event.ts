@@ -26,3 +26,11 @@ ipcMain.handle('uploadFile', async () => {
     filters: [{ name: 'Movies', extensions: ['mkv', 'avi', 'mp4', 'mov'] }]
   })
 })
+
+ipcMain.on('showMessage', async (_, args) => {
+  const { message, type } = args
+  await dialog.showMessageBox({
+    type,
+    message
+  })
+})
