@@ -20,6 +20,7 @@ const api = {
         const buffer = fs.readFileSync(file)
         const fleSuffix = getFileSuffix(file)
         const blob = bufferToBlob(buffer, fleSuffix)
+        console.log(blob)
         const blobUrl = URL.createObjectURL(blob)
         fileList.push({
           name: getFileName(file),

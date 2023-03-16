@@ -103,8 +103,9 @@ const uploadFile = async () => {
 const registerAndInit = () => {
   // 初始化播放器
   initVideo()
-  // 从新注册事件
-  registerEvent()
+  playInstance.value.once('ready', () => {
+    setTimeout(() => registerEvent(), 1000)
+  })
 }
 
 // 注册事件
